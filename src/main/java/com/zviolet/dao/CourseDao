@@ -1,0 +1,22 @@
+package com.zviolet.dao;
+
+import com.zviolet.entity.Course;
+
+public interface CourseDao {
+
+    /**
+     * 插入一条课程记录
+     * @param record
+     * @return
+     */
+    int insert(Course record);
+
+    /**
+     * 修改选定的课程记录
+     * @param record
+     * @return
+     */
+    int updateById(Course record);
+
+
+}
