@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zviolet.dao">
+
+    <resultMap id="baseResultMap" type="Course" >
+        <id property="courseId" column="course_id" />
+        <result property="courseName" column="course_name" />
+        <result property="teacherId" column="teacher_id" />
+        <result property="courseTime" column="course_time" />
+        <result property="classRoom" column="class_room" />
+        <result property="courseWeek" column="course_week"  />
+        <result property="courseType" column="course_type"/>
+        <result property="collegeId" column="college_id"  />
+        <result property="score" column="score" />
+    </resultMap>
+    
+    <insert id="insert" parameterType="Course">
+        INSERT INTO course(course_id, course_name, teacher_id, course_time, class_room,
+                           course_week, course_type, college_id, score)
+        VALUES (#{courseId}, #{courseName}, #{teacherId}, #{courseTime}, #{classRoom},
+                #{courseWeek}, #{courseType}, #{collegeId}, #{score})
+    </insert>
+
+    <update id="updateById" parameterType="course">
+        UPDATE course
+        SET course_id = #{courseId},
+            course_name = #{courseName},
+            teacher_id = #{teacherId},
+            course_time = #{courseTime},
+            class_room = #{classRoom},
+            course_week = #{courseWeek},
+            course_type = #{courseType},
+            college_id = #{collegeId},
+            score = #{score}
+        WHERE course_id = #{courseId}
+    </update>
+</mapper>
