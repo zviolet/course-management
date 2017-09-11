@@ -1,5 +1,6 @@
 package com.zviolet.controller;
 
+import com.zviolet.entity.Userlogin;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -21,7 +22,7 @@ public class LoginController {
 
     //登录表单处理
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login() throws Exception {
+    public String login(Userlogin userlogin) throws Exception {
         //Shiro实现登录
         UsernamePasswordToken token = new UsernamePasswordToken(userlogin.getUsername(),
                 userlogin.getPassword());
