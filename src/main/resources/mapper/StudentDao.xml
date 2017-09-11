@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zviolet.dao">
+
+    <resultMap id="baseResultMap" type="Student" >
+        <id property="studentId" column="student_id" />
+        <result property="studentName" column="student_name" />
+        <result property="sex" column="sex" />
+        <result property="birthyear" column="birthyear" />
+        <result property="grade" column="grade"  />
+        <result property="collegeId" column="college_id"  />
+    </resultMap>
+
+    <insert id="insert" parameterType="Student">
+        INSERT INTO course(student_id, student_name, sex, birthyear, grade, college_id)
+        VALUES (#{studentId}, #{studentName}, #{sex}, #{birthyear}, #{grade}, #{collegeId})
+    </insert>
+
+    <update id="updateById" parameterType="Student">
+        UPDATE course
+        SET student_id = #{courseId},
+            student_name = #{courseName},
+            sex = #{sex},
+            birthyear = #{birthyear},
+            grade = #{grade},
+            college_id = #{collegeId}
+        WHERE student_id = #{studentId}
+    </update>
+</mapper>
