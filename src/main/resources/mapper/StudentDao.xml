@@ -28,4 +28,23 @@
             college_id = #{collegeId}
         WHERE student_id = #{studentId}
     </update>
+        
+    <select id="selectById" resultMap="baseResultMap">
+        SELECT student_id, student_name, sex, birthyear, grade, college_id
+        FROM student
+        WHERE student_id = #{studentId}
+    </select>
+        
+    <select id="findByPaging" resultMap="baseResultMap" parameterType="PagingVO">
+        SELECT *
+        FROM student
+        ORDER BY student_id
+        limit #{showRecordNo}, #{pageSize}
+    </select>
+
+    <delete id="deleteById">
+        DELETE
+        FROM student
+        WHERE student_id = #{studentId}
+    </delete>
 </mapper>
