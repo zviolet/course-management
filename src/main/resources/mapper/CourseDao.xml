@@ -36,4 +36,24 @@
             score = #{score}
         WHERE course_id = #{courseId}
     </update>
+       
+    <select id="selectById" resultMap="baseResultMap">
+        SELECT course_id, course_name, teacher_id, course_time, class_room, course_week,
+               course_type, college_id, score
+        FROM course
+        WHERE course_id = #{courseId}
+    </select>
+
+    <select id="findByPaging" resultMap="baseResultMap" parameterType="PagingVO">
+        SELECT *
+        FROM course
+        ORDER BY course_id
+        limit #{showRecordNo}, #{pageSize}
+    </select>
+
+    <delete id="deleteById">
+        DELETE
+        FROM course
+        WHERE course_id = #{courseId}
+    </delete>
 </mapper>
