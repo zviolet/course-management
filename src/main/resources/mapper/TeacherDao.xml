@@ -31,4 +31,28 @@
             title = #{title},
             college_id = #{collegeId}
     </update>
+        
+    <delete id="deleteById" >
+        DELETE
+        FROM teacher
+        WHERE teacher_id = #{teacherId}
+    </delete>
+
+    <select id="selectAll" resultMap="baseResultMap">
+        SELECT *
+        FROM teacher
+    </select>
+
+    <select id="selectById" resultMap="baseResultMap">
+        SELECT *
+        FROM teacher
+        WHERE teacher_id = #{teacherId}
+    </select>
+
+    <select id="findByPaging" resultMap="baseResultMap" parameterType="PagingVO">
+        SELECT *
+        FROM teacher
+        ORDER BY teacher_id
+        limit #{showRecordNo}, #{pageSize}
+    </select>
 </mapper>
