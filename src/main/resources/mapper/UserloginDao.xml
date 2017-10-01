@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zviolet.dao.UserloginDao">
+
+    <resultMap id="baseUserloginResultMap" type="com.zviolet.entity.Userlogin" >
+        <id property="userId" column="user_id" />
+        <result property="username" column="username" />
+        <result property="password" column="password" />
+        <result property="roleId" column="role_id" />
+    </resultMap>
+
+    <insert id="insert" parameterType="Userlogin">
+        INSERT INTO userlogin(user_id, username, password, role_id)
+        VALUES (#{userId}, #{username}, #{password}, #{roleId})
+    </insert>
+
+    <select id="selectByName" resultMap="baseUserloginResultMap" parameterType="String">
+        SELECT user_id, username, password, role_id
+        FROM userlogin
+        WHERE username = #{username}
+    </select>
+
+
+    <update id="updateByName" parameterType="String">
+        UPDATE userlogin
+        SET user_id = #{userId},
+            username = #{username},
+            password = #{password},
+            role_id = #{roleId}
+        WHERE username = #{username}
+    </update>
+
+    <delete id="deleteByName" parameterType="Userlogin">
+        DELETE
+        FROM userlogin
+        WHERE username = #{username}
+    </delete>
+</mapper>
