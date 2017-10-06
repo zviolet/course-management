@@ -1,0 +1,18 @@
+package com.zviolet.service.impl;
+
+import com.zviolet.dao.RoleDao;
+import com.zviolet.entity.Role;
+import com.zviolet.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class RoleServiceImpl implements RoleService {
+    @Autowired
+    private RoleDao roleDao;
+
+    public Role findById(Integer id) throws Exception {
+        Role role = roleDao.selectById(id);
+        return role;
+    }
+}
