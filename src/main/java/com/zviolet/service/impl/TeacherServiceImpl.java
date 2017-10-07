@@ -41,4 +41,8 @@ public class TeacherServiceImpl implements TeacherService{
     public void updateById(Teacher teacher) throws Exception {
         teacherDao.updateById(teacher);
     }
+    
+    public void removeById(Integer id) throws Exception {
+        teacherDao.deleteById(id);
+    }
 }
