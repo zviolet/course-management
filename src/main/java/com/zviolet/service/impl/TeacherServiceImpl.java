@@ -33,4 +33,12 @@ public class TeacherServiceImpl implements TeacherService{
         }
         return false;
     }
+    
+    public Teacher findById(Integer id) throws Exception {
+        return teacherDao.selectById(id);
+    }
+
+    public void updateById(Teacher teacher) throws Exception {
+        teacherDao.updateById(teacher);
+    }
 }
